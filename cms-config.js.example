@@ -1,0 +1,7 @@
+// Copy to cms-config.js and fill in your Supabase project URL and publishable/anon key.
+// The anon key is intended for browser use; database security must come from RLS policies.
+// NEVER place a service_role key in this file.
+window.COFFEELLA_CMS_CONFIG = {
+  supabaseUrl: "https://YOUR_PROJECT.supabase.co",
+  supabaseAnonKey: "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY"
+};

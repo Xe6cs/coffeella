@@ -7,16 +7,13 @@
   <meta name="description" content="منيو كوفيلا كافيه في بغداد – حي الجامعة: مشروبات ساخنة وباردة، حلويات ومخبوزات، بالأسعار المحدّثة بالدينار العراقي.">
   <meta name="theme-color" content="#120d0a">
   <meta name="color-scheme" content="dark">
-
   <meta property="og:type" content="website">
   <meta property="og:title" content="كوفيلا كافيه — المنيو">
   <meta property="og:description" content="The Real Experience · مشروبات ساخنة وباردة، حلويات ومخبوزات.">
   <meta property="og:image" content="assets/hero.jpg">
   <meta property="og:locale" content="ar_IQ">
-
   <link rel="icon" type="image/png" href="assets/brand.png">
   <link rel="apple-touch-icon" href="assets/brand.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Lato:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@500;600;700&display=swap">
@@ -24,7 +21,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- أيقونات -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
@@ -35,95 +31,46 @@
     <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
-
   <a class="skip" href="#menu">تخطَّ إلى المنيو</a>
-
-  <!-- شريط المعلومات العلوي -->
-  <div class="infobar" id="top">
-    <div class="wrap infobar__inner">
-      <span class="infobar__addr"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>بغداد، حي الجامعة — فرع شركة كري الأرض الصلبة</span>
-      <a class="infobar__tel" href="tel:+9647870010580" dir="ltr"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>0787 001 0580</a>
-    </div>
-  </div>
-
-  <!-- الواجهة -->
-  <header class="hero">
-    <div class="hero__media" aria-hidden="true">
-      <img src="assets/hero.jpg" alt="" width="1100" height="1650" fetchpriority="high">
-    </div>
-    <div class="wrap hero__inner">
-      <div class="hero__copy">
-        <img class="badge badge--xl" src="assets/brand.png" alt="شعار كوفيلا كافيه" width="106" height="104">
-        <p class="hero__eyebrow" lang="en" dir="ltr">Coffeella Café · Baghdad</p>
-        <h1 class="hero__title">كوفيلا كافيه</h1>
-        <p class="hero__tagline" lang="en" dir="ltr">The Real Experience</p>
-        <p class="hero__lead">مشروبات ساخنة وباردة، حلويات ومخبوزات — المنيو كاملاً بالأسعار في صفحة واحدة.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#menu">تصفّح المنيو<svg class="ico" aria-hidden="true"><use href="#i-down"/></svg></a>
-          <a class="btn btn--ghost btn--wa" href="https://wa.me/9647870010580" target="_blank" rel="noopener" aria-label="للاستفسار عبر واتساب"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span class="btn__label">للاستفسار</span></a>
-          <a class="btn btn--icon" href="https://www.instagram.com/coffeella.cafe/" target="_blank" rel="noopener" aria-label="انستغرام كوفيلا"><svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg></a>
-        </div>
+  <div class="infobar" id="top"><div class="wrap infobar__inner">
+    <span class="infobar__addr"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>بغداد، حي الجامعة — فرع شركة كري الأرض الصلبة</span>
+    <a class="infobar__tel" href="tel:+9647870010580" dir="ltr"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>0787 001 0580</a>
+  </div></div>
+  <header class="hero"><div class="hero__media" aria-hidden="true"><img src="assets/hero.jpg" alt="" width="1100" height="1650" fetchpriority="high"></div>
+    <div class="wrap hero__inner"><div class="hero__copy">
+      <img class="badge badge--xl" src="assets/brand.png" alt="شعار كوفيلا كافيه" width="106" height="104">
+      <p class="hero__eyebrow" lang="en" dir="ltr">Coffeella Café · Baghdad</p><h1 class="hero__title">كوفيلا كافيه</h1>
+      <p class="hero__tagline" lang="en" dir="ltr">The Real Experience</p><p class="hero__lead">مشروبات ساخنة وباردة، حلويات ومخبوزات — المنيو كاملاً بالأسعار في صفحة واحدة.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#menu" data-analytics="hero-menu">تصفّح المنيو<svg class="ico" aria-hidden="true"><use href="#i-down"/></svg></a>
+        <a class="btn btn--ghost btn--wa" href="https://wa.me/9647870010580" target="_blank" rel="noopener" aria-label="للاستفسار عبر واتساب" data-analytics="hero-whatsapp"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span class="btn__label">للاستفسار</span></a>
+        <a class="btn btn--icon" href="https://www.instagram.com/coffeella.cafe/" target="_blank" rel="noopener" aria-label="انستغرام كوفيلا" data-analytics="hero-instagram"><svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg></a>
       </div>
-    </div>
+    </div></div>
   </header>
-
-  <!-- بطاقات الأقسام -->
-  <section class="wrap cats" aria-labelledby="cats-title">
-    <h2 id="cats-title" class="sr-only">أقسام المنيو</h2>
-    <div class="cats__grid" id="cats"></div>
-  </section>
-
-  <!-- شريط التنقل والبحث -->
-  <nav class="toolbar" id="toolbar" aria-label="أقسام المنيو والبحث">
-    <div class="wrap toolbar__inner">
-      <a class="toolbar__brand" href="#top" aria-label="العودة إلى الأعلى">
-        <img class="badge" src="assets/brand.png" alt="" width="106" height="104">
-      </a>
-      <label class="search">
-        <span class="sr-only">ابحث في المنيو</span>
-        <svg class="ico search__ico" aria-hidden="true"><use href="#i-search"/></svg>
-        <input id="q" type="search" placeholder="ابحث عن مشروب أو حلوى…" autocomplete="off" enterkeyhint="search">
-        <button class="search__clear" type="button" id="q-clear" aria-label="مسح البحث" hidden><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
-      </label>
-      <div class="chips" id="chips"></div>
-    </div>
-  </nav>
-
-  <!-- المنيو -->
-  <main id="menu" class="wrap menu" tabindex="-1">
-    <p class="menu__status" id="status" role="status" aria-live="polite"></p>
-    <div id="sections"></div>
-    <div class="empty" id="empty" hidden>
-      <p class="empty__title">لم نجد هذا الصنف</p>
-      <p class="empty__text">جرّب كلمة أخرى، أو اسألنا مباشرة على واتساب.</p>
-      <a class="btn btn--ghost" href="https://wa.me/9647870010580" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>اسألنا</a>
-    </div>
+  <section class="wrap cats" aria-labelledby="cats-title"><h2 id="cats-title" class="sr-only">أقسام المنيو</h2><div class="cats__grid" id="cats"></div></section>
+  <nav class="toolbar" id="toolbar" aria-label="أقسام المنيو والبحث"><div class="wrap toolbar__inner">
+    <a class="toolbar__brand" href="#top" aria-label="العودة إلى الأعلى"><img class="badge" src="assets/brand.png" alt="" width="106" height="104"></a>
+    <label class="search"><span class="sr-only">ابحث في المنيو</span><svg class="ico search__ico" aria-hidden="true"><use href="#i-search"/></svg><input id="q" type="search" placeholder="ابحث عن مشروب أو حلوى…" autocomplete="off" enterkeyhint="search"><button class="search__clear" type="button" id="q-clear" aria-label="مسح البحث" hidden><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button></label>
+    <div class="chips" id="chips"></div>
+  </div></nav>
+  <main id="menu" class="wrap menu" tabindex="-1"><p class="menu__status" id="status" role="status" aria-live="polite"></p><div id="sections"></div>
+    <div class="empty" id="empty" hidden><p class="empty__title">لم نجد هذا الصنف</p><p class="empty__text">جرّب كلمة أخرى، أو اسألنا مباشرة على واتساب.</p><a class="btn btn--ghost" href="https://wa.me/9647870010580" target="_blank" rel="noopener" data-analytics="empty-whatsapp"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>اسألنا</a></div>
     <noscript><p class="empty">فعّل JavaScript لعرض المنيو.</p></noscript>
   </main>
-
-  <!-- التذييل -->
-  <footer class="footer">
-    <div class="wrap footer__inner">
-      <div class="footer__brand">
-        <img class="badge badge--lg" src="assets/brand.png" alt="" width="106" height="104">
-        <div>
-          <p class="footer__name">كوفيلا كافيه</p>
-          <p class="footer__tag" lang="en" dir="ltr">Coffeella Café — The Real Experience</p>
-        </div>
-      </div>
-      <ul class="footer__links">
-        <li><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>بغداد، حي الجامعة — فرع شركة كري الأرض الصلبة</li>
-        <li><a href="tel:+9647870010580"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span dir="ltr">0787 001 0580</span></a></li>
-        <li><a href="https://wa.me/9647870010580" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>واتساب — للاستفسار</a></li>
-        <li><a href="https://www.instagram.com/coffeella.cafe/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg><span dir="ltr">@coffeella.cafe</span></a></li>
-      </ul>
-      <p class="footer__note">جميع الأسعار بالدينار العراقي.</p>
-    </div>
-  </footer>
-
+  <footer class="footer"><div class="wrap footer__inner"><div class="footer__brand"><img class="badge badge--lg" src="assets/brand.png" alt="" width="106" height="104"><div><p class="footer__name">كوفيلا كافيه</p><p class="footer__tag" lang="en" dir="ltr">Coffeella Café — The Real Experience</p></div></div>
+    <ul class="footer__links"><li><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>بغداد، حي الجامعة — فرع شركة كري الأرض الصلبة</li>
+      <li><a href="tel:+9647870010580" data-analytics="footer-phone"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span dir="ltr">0787 001 0580</span></a></li>
+      <li><a href="https://wa.me/9647870010580" target="_blank" rel="noopener" data-analytics="footer-whatsapp"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>واتساب — للاستفسار</a></li>
+      <li><a href="https://www.instagram.com/coffeella.cafe/" target="_blank" rel="noopener" data-analytics="footer-instagram"><svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg><span dir="ltr">@coffeella.cafe</span></a></li>
+    </ul><p class="footer__note">جميع الأسعار بالدينار العراقي.</p>
+  </div></footer>
   <button class="totop" id="totop" type="button" aria-label="العودة إلى الأعلى" hidden><svg class="ico" aria-hidden="true"><use href="#i-up"/></svg></button>
-
   <script src="menu-data.js"></script>
-  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="cms-config.js"></script>
+  <script src="cms-client.js"></script>
+  <script src="analytics.js"></script>
+  <script src="bootstrap.js"></script>
 </body>
 </html>
