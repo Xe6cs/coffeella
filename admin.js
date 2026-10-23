@@ -116,6 +116,97 @@
       }));
     } catch (error) { root.textContent = error.message || "تعذر تحميل الأصناف."; }
   }
+
+  async function importLegacyMenu() {
+    const button = $("#import-menu");
+    const note = $("#import-status");
+    const menu = window.COFFEELLA_MENU;
+    if (!Array.isArray(menu) || !menu.length) {
+      note.textContent = "لم أتمكن من قراءة بيانات المنيو الحالية.";
+      return;
+    }
+    if (!window.confirm("سيتم استيراد وتحديث أقسام ومجموعات وأصناف menu-data.js في قاعدة البيانات. لن تُحذف الأصناف الموجودة. هل تريد المتابعة؟")) return;
+    button.disabled = true;
+    note.textContent = "جارٍ استيراد الأقسام…";
+    try {
+      const categories = menu.map((cat, position) => ({
+        slug: String(cat.id),
+        name_ar: String(cat.ar || cat.id),
+        name_en: String(cat.en || ""),
+        short_name: cat.short || null,
+        photo_url: cat.photo || null,
+        focus: cat.focus || "center",
+        position,
+        is_published: true
+      }));
+      const { data: savedCategories, error: categoryError } = await cms.client
+        .from("menu_categories").upsert(categories, { onConflict: "slug" }).select("id,slug");
+      if (categoryError) throw categoryError;
+      const categoryIds = new Map((savedCategories || []).map(c => [c.slug, c.id]));
+      const groupRows = [];
+      menu.forEach((cat, categoryPosition) => {
+        (cat.groups || []).forEach((group, groupPosition) => {
+          groupRows.push({
+            category_id: categoryIds.get(String(cat.id)),
+            legacy_key: String(cat.id) + "::group::" + groupPosition,
+            name_ar: String(group.ar || "مجموعة"),
+            name_en: String(group.en || ""),
+            position: groupPosition,
+            is_published: true
+          });
+        });
+      });
+      if (groupRows.some(g => !g.category_id)) throw new Error("تعذر ربط إحدى المجموعات بالقسم.");
+      note.textContent = "جارٍ استيراد المجموعات…";
+      const { data: savedGroups, error: groupError } = await cms.client
+        .from("menu_groups").upsert(groupRows, { onConflict: "legacy_key" }).select("id,legacy_key");
+      if (groupError) throw groupError;
+      const groupIds = new Map((savedGroups || []).map(g => [g.legacy_key, g.id]));
+      const itemRows = [];
+      menu.forEach(cat => {
+        (cat.groups || []).forEach((group, groupPosition) => {
+          const groupKey = String(cat.id) + "::group::" + groupPosition;
+          const groupId = groupIds.get(groupKey);
+          (group.items || []).forEach((item, itemPosition) => {
+            const ranged = Array.isArray(item.price);
+            itemRows.push({
+              group_id: groupId,
+              legacy_key: groupKey + "::item::" + itemPosition,
+              name_ar: String(item.ar || "صنف"),
+              name_en: String(item.en || ""),
+              description: item.description || null,
+              price: item.price == null ? null : (ranged ? null : Number(item.price)),
+              price_min: ranged ? Number(item.price[0]) : null,
+              price_max: ranged ? Number(item.price[1]) : null,
+              discount_price: item.discountPrice == null ? null : Number(item.discountPrice),
+              discount_percent: item.discountPercent == null ? null : Number(item.discountPercent),
+              image_url: item.image || null,
+              icon: item.icon || null,
+              position: itemPosition,
+              is_available: true,
+              is_published: true
+            });
+          });
+        });
+      });
+      if (itemRows.some(i => !i.group_id)) throw new Error("تعذر ربط أحد الأصناف بالمجموعة الخاصة به.");
+      note.textContent = "جارٍ استيراد " + itemRows.length.toLocaleString("ar-IQ") + " صنفاً…";
+      const { error: itemError } = await cms.client
+        .from("menu_items").upsert(itemRows, { onConflict: "legacy_key" });
+      if (itemError) throw itemError;
+      note.textContent = "نجح استيراد " + categories.length.toLocaleString("ar-IQ") + " أقسام و" +
+        groupRows.length.toLocaleString("ar-IQ") + " مجموعات و" + itemRows.length.toLocaleString("ar-IQ") +
+        " صنفاً. لم تُحذف أي أصناف موجودة.";
+      say("اكتمل استيراد المنيو إلى قاعدة البيانات.");
+      await loadProducts();
+    } catch (error) {
+      note.textContent = "فشل الاستيراد: " + (error.message || "خطأ غير معروف");
+    } finally {
+      button.disabled = false;
+    }
+  }
+  $("#import-menu").addEventListener("click", importLegacyMenu);
+
   $("#reload-products").addEventListener("click", loadProducts);
   async function loadDesign() {
     try {
