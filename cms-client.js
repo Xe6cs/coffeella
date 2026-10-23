@@ -65,7 +65,7 @@
           event_type: event.type,
           session_id: sessionId,
           user_id: data?.user?.id || null,
-          page_path: location.pathname,
+          page_path: location.pathname + (() => { const slug = new URLSearchParams(location.search).get("slug"); return slug && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) ? "?slug=" + slug : ""; })(),
           element_key: event.key || null,
           duration_ms: Number.isFinite(event.duration) ? Math.max(0, Math.min(86400000, Math.round(event.duration))) : null,
           properties: event.properties || {}
