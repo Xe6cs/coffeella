@@ -5,7 +5,7 @@
   }[c]));
   const safeColor = (value, fallback) => {
     const v = String(value || "").trim();
-    return /^(#[0-9a-f]{3,8}|rgba?\([\d\s.,%]+\))$/i.test(v) ? v : fallback;
+    return v.toLowerCase() === "transparent" || /^(#[0-9a-f]{3,8}|rgba?\([\d\s.,%]+\))$/i.test(v) ? v : fallback;
   };
   const safeUrl = (value) => {
     const v = String(value || "").trim();
