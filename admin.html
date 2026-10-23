@@ -13,6 +13,8 @@
   <script src="cms-config.js"></script>
   <script src="cms-client.js"></script>
   <script src="admin.js" defer></script>
+  <script src="page-renderer.js" defer></script>
+  <script src="page-builder.js" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -79,7 +81,36 @@
         <div class="panel"><div class="panel-heading"><div><h2>التحليلات</h2><p class="muted">الأحداث المتاحة بعد تفعيل قاعدة البيانات.</p></div><button id="reload-analytics" class="btn secondary">تحديث</button></div><div id="analytics-report"></div></div>
       </section>
       <section class="tab-panel" data-panel="pages" hidden>
-        <div class="panel"><h2>إدارة الصفحات</h2><p class="muted">هيكل الصفحات الديناميكي مُعرّف في قاعدة البيانات. محرر السحب والإفلات والنشر ما زال يحتاج إلى تنفيذ منفصل قبل أن تصبح هذه الوظائف متاحة من هنا.</p><div id="pages-list"></div></div>
+        <div class="panel">
+          <div class="panel-heading">
+            <div><h2>محرّر الصفحات</h2><p class="muted">أنشئ صفحات بمكوّنات مرئية، عدّل محتواها وترتيبها، ثم احفظها كمسودة أو انشرها.</p></div>
+            <button id="new-page" class="btn primary">+ صفحة جديدة</button>
+          </div>
+          <p id="pages-status" class="muted" role="status"></p>
+          <div id="pages-list"><p class="muted">افتح هذا القسم لتحميل الصفحات.</p></div>
+          <section id="page-editor" class="page-editor" hidden>
+            <div class="panel-heading"><h2 id="page-editor-title">صفحة جديدة</h2><button id="cancel-page" type="button" class="btn secondary">رجوع للقائمة</button></div>
+            <form id="page-form">
+              <div class="page-meta-grid">
+                <label>عنوان الصفحة<input id="page-title" name="title" maxlength="180" required placeholder="مثلاً: من نحن"></label>
+                <label>الرابط المختصر (بالإنجليزية)<input id="page-slug" name="slug" maxlength="100" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" required placeholder="about-us"></label>
+                <div class="page-current-status"><span>الحالة الحالية</span><strong id="page-status-label">مسودة</strong></div>
+                <label>قالب البداية<select id="page-template"><option value="blank">صفحة فارغة</option><option value="starter">قالب تعريفي جاهز</option></select></label>
+              </div>
+              <div class="builder-layout">
+                <div class="builder-main">
+                  <div class="panel-heading"><h3>مكوّنات الصفحة</h3><div class="add-block-controls"><select id="block-type" aria-label="نوع المكوّن"><option value="hero">واجهة رئيسية</option><option value="text">نص</option><option value="image">صورة</option><option value="button">زر</option><option value="card">بطاقة</option><option value="menu">عرض المنيو</option><option value="divider">فاصل</option><option value="spacer">مسافة</option></select><button id="add-block" type="button" class="btn secondary">إضافة مكوّن</button></div></div>
+                  <div id="blocks-editor" class="blocks-editor"></div>
+                </div>
+                <aside class="builder-preview"><h3>معاينة مباشرة</h3><p class="muted">المعاينة تقريبية؛ العرض النهائي يتبع تصميم الصفحة المنشورة.</p><div id="page-preview" class="page-preview"></div></aside>
+              </div>
+              <div class="page-actions">
+                <button type="submit" class="btn secondary" name="saveMode" value="draft" id="save-page-draft">حفظ المسودة</button>
+                <button type="submit" class="btn primary" name="saveMode" value="published" id="publish-page">حفظ ونشر</button>
+              </div>
+            </form>
+          </section>
+        </div>
       </section>
       <p id="global-status" class="status" role="status"></p>
     </section>
