@@ -293,7 +293,14 @@
         updated_by:userId || null,
         published_at:nextStatus === "published" ? (currentPage.published_at || nowIso()) : null
       };
-      const {data,error} = await cms.client.from("pages").upsert(payload,{onConflict:"slug"}).select("*").single();
+      const query = currentPage.id
+        ? cms.client.from("pages").update({
+            slug,title,status:nextStatus,page_type:"custom",layout:currentPage.layout,
+            seo:currentPage.seo || {},updated_by:userId || null,
+            published_at:nextStatus === "published" ? (currentPage.published_at || nowIso()) : null
+          }).eq("id",currentPage.id)
+        : cms.client.from("pages").insert(payload);
+      const {data,error} = await query.select("*").single();
       if (error) throw error;
       currentPage = structuredCloneSafe(data);
       isNew = false;
