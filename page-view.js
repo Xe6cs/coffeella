@@ -57,10 +57,6 @@
       if (!root.innerHTML.trim()) {
         root.innerHTML = '<section class="page-message"><h1>' + esc(page.title) + '</h1><p>هذه الصفحة منشورة حالياً من دون مكوّنات.</p></section>';
       }
-      window.CoffeellaAnalytics?.track({
-        type:"page_view",
-        properties:{slug:page.slug,title:page.title,dynamic_page:true}
-      });
     } catch (error) {
       console.error("[Coffeella page]",error?.message || error);
       message("تعذّر تحميل الصفحة","حدث خطأ أثناء جلب محتوى الصفحة. حدّث الصفحة، وإذا استمر الخطأ راجع إعدادات الوصول.");
