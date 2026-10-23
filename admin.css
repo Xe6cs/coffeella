@@ -44,3 +44,5 @@
 .page-preview .page-button{display:inline-block;margin-top:6px;font-size:12px}
 @media(max-width:940px){.builder-layout{grid-template-columns:1fr}.builder-preview{position:static;max-height:none}.page-meta-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.page-list-item{align-items:flex-start;flex-direction:column}.page-list-item__actions{width:100%}.page-list-item__actions .btn{flex:1}.page-meta-grid{grid-template-columns:1fr}.block-editor__fields{grid-template-columns:1fr}.add-block-controls{width:100%}.add-block-controls select{flex:1}.page-actions .btn{flex:1}}
+
+.page-current-status{display:flex;flex-direction:column;justify-content:center;gap:4px;padding:9px 12px;border:1px solid var(--line);border-radius:9px;color:var(--muted);font-size:13px}.page-current-status strong{color:var(--text)}
