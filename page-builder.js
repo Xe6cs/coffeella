@@ -134,11 +134,11 @@
 
   function startNew() {
     isNew = true;
-    currentPage = {id:null,slug:"new-page",title:"صفحة جديدة",status:"draft",page_type:"custom",layout:blankLayout(),seo:{},transition:null};
+    currentPage = {id:null,slug:"page-" + Date.now().toString(36),title:"صفحة جديدة",status:"draft",page_type:"custom",layout:blankLayout(),seo:{},transition:null};
     $("#page-editor-title").textContent = "إنشاء صفحة جديدة";
     $("#page-title").value = currentPage.title;
     $("#page-slug").value = currentPage.slug;
-    $("#page-status").value = "draft";
+    $("#page-status-label").textContent = "مسودة";
     $("#page-template").value = "blank";
     $("#page-template").disabled = false;
     listRoot.hidden = true;
@@ -155,7 +155,7 @@
     $("#page-editor-title").textContent = "تعديل: " + page.title;
     $("#page-title").value = page.title;
     $("#page-slug").value = page.slug;
-    $("#page-status").value = page.status;
+    $("#page-status-label").textContent = statusLabel(page.status);
     $("#page-template").value = "blank";
     $("#page-template").disabled = true;
     listRoot.hidden = true;
@@ -306,7 +306,7 @@
       isNew = false;
       $("#page-template").disabled = true;
       $("#page-editor-title").textContent = "تعديل: " + data.title;
-      $("#page-status").value = data.status;
+      $("#page-status-label").textContent = statusLabel(data.status);
       message(data.status === "published" ? "تم حفظ الصفحة ونشرها." : "تم حفظ الصفحة كمسودة.");
       load();
     } catch(error) {
