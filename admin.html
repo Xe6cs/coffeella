@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="admin.css">
+  <script src="menu-data.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="cms-config.js"></script>
   <script src="cms-client.js"></script>
@@ -53,7 +54,7 @@
         <div class="panel"><h2>آخر الأحداث</h2><div id="recent-events" class="table-wrap"><p class="muted">جارٍ التحميل…</p></div></div>
       </section>
       <section class="tab-panel" data-panel="products" hidden>
-        <div class="panel"><div class="panel-heading"><div><h2>الأصناف والأسعار</h2><p class="muted">تعديل الاسم والسعر والحالة للأصناف الموجودة.</p></div><button id="reload-products" class="btn secondary">تحديث</button></div>
+        <div class="panel"><div class="panel-heading"><div><h2>الأصناف والأسعار</h2><p class="muted">استيراد المنيو الحالي أولاً، ثم تعديل الاسم والسعر والحالة للأصناف.</p></div><div class="top-actions"><button id="import-menu" class="btn primary">استيراد المنيو الحالي</button><button id="reload-products" class="btn secondary">تحديث</button></div></div><p id="import-status" class="muted" role="status"></p>
           <div id="products-list" class="table-wrap"><p class="muted">جارٍ التحميل…</p></div>
           <p class="muted">الإضافة والحذف وإدارة الصور والخصومات ستُستكمل في مرحلة محرر المنتجات.</p>
         </div>
